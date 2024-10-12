@@ -25,4 +25,11 @@ class PropertyEntity (
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vendor_id", nullable = true)
     var vendor: VendorEntity?,
+
+    @OneToMany(mappedBy = "property", fetch = FetchType.LAZY)
+    val attributes: List<PropertyAttributeEntity> = listOf(),
+
+    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id")
+    val images: List<PropertyImageEntity> = listOf(),
 )
