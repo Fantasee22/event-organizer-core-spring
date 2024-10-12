@@ -42,4 +42,6 @@ class OrderEntity(
     @Column(name = "end_time", nullable = false, unique = false)
     val endTime: LocalDateTime,
 
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    val payments: List<PaymentEntity> = listOf(),
 )
