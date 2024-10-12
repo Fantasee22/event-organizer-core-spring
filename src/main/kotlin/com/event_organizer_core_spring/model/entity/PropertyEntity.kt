@@ -22,7 +22,7 @@ class PropertyEntity (
     @Column(name = "property_type", nullable = false, length = 50)
     val proertyType: String,
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "vendor_id", nullable = true)
-//    var vendor: VendorEntity?,
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vendor_id", nullable = true)
+    var vendor: VendorEntity?,
 )
