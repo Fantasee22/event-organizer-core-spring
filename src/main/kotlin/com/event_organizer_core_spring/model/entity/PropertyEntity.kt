@@ -20,7 +20,7 @@ class PropertyEntity (
     val description: String,
 
     @Column(name = "property_type", nullable = false, length = 50)
-    val proertyType: String,
+    val propertyType: String,
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vendor_id", nullable = true)
