@@ -30,5 +30,8 @@ class CustomerEntity (
     val birthDate: LocalDateTime?,
 
     @Column(name = "email", nullable = false)
-    val email: String
+    val email: String,
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    val orders: List<OrderEntity> = listOf()
 )
