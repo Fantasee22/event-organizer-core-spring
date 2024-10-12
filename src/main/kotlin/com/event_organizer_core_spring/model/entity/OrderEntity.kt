@@ -44,4 +44,10 @@ class OrderEntity(
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     val payments: List<PaymentEntity> = listOf(),
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    val orderRequests: List<OrderRequestEntity> = listOf(),
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    val orderedProperties: List<OrderedPropertyEntity> = listOf()
 )
