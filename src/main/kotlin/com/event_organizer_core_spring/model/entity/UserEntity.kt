@@ -10,10 +10,10 @@ class UserEntity (
     @Column(name = "id")
     val id: Long,
 
-    @Column(name = "user_name", nullable = false, unique = true)
+    @Column(name = "user_name", nullable = false, unique = true, length = 100)
     val userName: String,
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, length = 100)
     val password: String,
 
     @Column(name = "is_locked", nullable = false)
@@ -22,7 +22,7 @@ class UserEntity (
     @Column(name = "is_active", nullable = false)
     val isActive: Boolean,
 
-    @Column(name = "role_code", nullable = false)
+    @Column(name = "role_code", nullable = false, length = 50)
     val roleCode: String,
 
     @OneToOne(fetch = FetchType.LAZY)

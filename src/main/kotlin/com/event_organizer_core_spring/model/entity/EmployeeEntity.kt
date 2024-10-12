@@ -15,7 +15,7 @@ class EmployeeEntity (
     @Column(name = "employee_no", nullable = false, unique = true, length = 50)
     val employeeNo: String,
 
-    @Column(name = "employee_name", nullable = false)
+    @Column(name = "employee_name", nullable = false, length = 100)
     val employeeName: String,
 
     @Column(name = "phone_number", nullable = true, length = 20)

@@ -16,10 +16,10 @@ public abstract class BaseEntity { //ToDo: check if base entity is declared righ
     @Column(name = "dtm_upd", nullable = true)
     val dateUpdate: LocalDateTime? = null
 
-    @Column(name = "usr_crt", nullable = true)
+    @Column(name = "usr_crt", nullable = true, length = 100)
     val userCreate: String? = null
 
-    @Column(name = "usr_upd", nullable = true)
+    @Column(name = "usr_upd", nullable = true, length = 100)
     val userUpdate: String? = null
 }
 

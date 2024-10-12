@@ -14,7 +14,7 @@ class CustomerEntity (
     @Column(name = "customer_no", nullable = false, unique = true, length = 50)
     val customerNo: String,
 
-    @Column(name = "customer_name", nullable = false)
+    @Column(name = "customer_name", nullable = false, length = 100)
     val customerName: String,
 
     @Column(name = "phone_number", nullable = false, length = 20)
@@ -29,6 +29,6 @@ class CustomerEntity (
     @Column(name = "birth_date", nullable = true)
     val birthDate: LocalDateTime?,
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, length = 320)
     val email: String
 )
