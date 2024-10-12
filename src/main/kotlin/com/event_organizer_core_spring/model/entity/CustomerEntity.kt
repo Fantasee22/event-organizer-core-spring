@@ -14,7 +14,7 @@ class CustomerEntity (
     @Column(name = "customer_no", nullable = false, unique = true, length = 50)
     val customerNo: String,
 
-    @Column(name = "customer_name", nullable = false, length = 100)
+    @Column(name = "customer_name", nullable = false)
     val customerName: String,
 
     @Column(name = "phone_number", nullable = false, length = 20)
@@ -30,5 +30,8 @@ class CustomerEntity (
     val birthDate: LocalDateTime?,
 
     @Column(name = "email", nullable = false, length = 320)
-    val email: String
+    val email: String,
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    val orders: List<OrderEntity> = listOf()
 )

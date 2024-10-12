@@ -28,6 +28,9 @@ class EmployeeEntity (
     val idNo: String,
 
     @Column(name = "birth_date", nullable = true)
-    val birthDate: LocalDateTime?
+    val birthDate: LocalDateTime?,
+
+    @OneToMany(mappedBy = "pic", fetch = FetchType.LAZY)
+    val orders: List<OrderEntity> = listOf()
 
 )
