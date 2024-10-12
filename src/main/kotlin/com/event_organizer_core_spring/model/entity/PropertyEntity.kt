@@ -27,6 +27,9 @@ class PropertyEntity (
     var vendor: VendorEntity?,
 
     @OneToMany(mappedBy = "property", fetch = FetchType.LAZY)
+    val orderedProperties: List<OrderedPropertyEntity> = listOf(),
+
+    @OneToMany(mappedBy = "property", fetch = FetchType.LAZY)
     val attributes: List<PropertyAttributeEntity> = listOf(),
 
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
