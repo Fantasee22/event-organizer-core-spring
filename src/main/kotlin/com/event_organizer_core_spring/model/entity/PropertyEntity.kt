@@ -11,7 +11,7 @@ class PropertyEntity (
     val id: Long,
 
     @Column(name = "property_code", nullable = false, unique = true, length = 50)
-    val proertyCode: String,
+    val propertyCode: String,
 
     @Column(name = "property_name", nullable = false, length = 100)
     val propertyName: String,
