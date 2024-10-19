@@ -4,8 +4,8 @@ import com.event_organizer_core_spring.model.core.BaseEntity
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "master")
-class MasterEntity(
+@Table(name = "ref_master")
+class RefMasterEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

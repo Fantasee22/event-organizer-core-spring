@@ -3,8 +3,8 @@ package com.event_organizer_core_spring.model.entity
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "user")
-class UserEntity (
+@Table(name = "ref_user")
+class RefUserEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
