@@ -1,6 +1,6 @@
 package com.event_organizer_core_spring.model.entity
 
-import com.event_organizer_core_spring.model.core.BaseEntity
+import com.event_organizer_core_spring.core.model.BaseEntity
 import jakarta.persistence.*
 
 @Entity

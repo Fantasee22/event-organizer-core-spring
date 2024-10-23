@@ -1,4 +1,4 @@
-package com.event_organizer_core_spring.model.core
+package com.event_organizer_core_spring.core.model
 
 import jakarta.persistence.Column
 import jakarta.persistence.MappedSuperclass
