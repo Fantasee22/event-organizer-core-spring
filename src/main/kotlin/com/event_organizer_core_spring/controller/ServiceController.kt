@@ -1,8 +1,6 @@
 package com.event_organizer_core_spring.controller
 
-import com.event_organizer_core_spring.dto.request.RegisterUserRequest
 import com.event_organizer_core_spring.dto.request.ServiceRequest
-import com.event_organizer_core_spring.dto.response.RegisterUserResponse
 import com.event_organizer_core_spring.dto.response.ServiceResponse
 import com.event_organizer_core_spring.service.ServiceService
 import jakarta.validation.Valid

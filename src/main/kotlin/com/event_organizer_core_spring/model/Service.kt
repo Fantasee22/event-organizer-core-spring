@@ -1,9 +1,6 @@
 package com.event_organizer_core_spring.model
 
-import com.event_organizer_core_spring.model.entity.OrderEntity
 import com.event_organizer_core_spring.model.entity.ServiceEntity
-import com.event_organizer_core_spring.model.entity.ServiceImageEntity
-import jakarta.persistence.*
 
 class Service (
     val id: Long? = null,
