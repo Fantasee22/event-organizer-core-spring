@@ -1,5 +1,6 @@
 package com.event_organizer_core_spring.model.entity
 
+import com.event_organizer_core_spring.model.ServiceImage
 import jakarta.persistence.*
 
 @Entity
@@ -14,3 +15,10 @@ class ServiceImageEntity(
     @Column(name = "image_data", nullable = false)
     val imageData: ByteArray
 )
+
+fun ServiceImageEntity.toModel() : ServiceImage {
+    return ServiceImage(
+        this.id,
+        this.imageData
+    )
+}

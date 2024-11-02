@@ -1,5 +1,7 @@
 package com.event_organizer_core_spring.model.entity
 
+import com.event_organizer_core_spring.model.Service
+import com.event_organizer_core_spring.model.toEntity
 import jakarta.persistence.*
 
 @Entity
@@ -8,12 +10,12 @@ class ServiceEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    val id: Long?,
 
     @Column(name = "service_code", nullable = false, unique = true, length = 50)
     val serviceCode: String,
 
-    @Column(name = "service_name", nullable = false, unique = false, length = 50)
+    @Column(name = "service_name", nullable = false, unique = false, length = 100)
     val serviceName: String,
 
     @Column(name = "service_type", nullable = false, unique = false, length = 20)
@@ -40,8 +42,39 @@ class ServiceEntity (
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Column(name = "mapping_service_properties", nullable = false)
-    val mappingServiceProperties: List<String>,
+    val mappingServiceProperties: List<String> = listOf(),
 
     @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
     val orders: List<OrderEntity> = listOf()
 )
+
+fun ServiceEntity.toModel() : Service {
+    return Service (
+        this.id,
+        this.serviceCode,
+        this.serviceName,
+        this.serviceType,
+        this.description,
+        this.minimumPrice,
+        this.maximalPrice,
+        this.estimationTime,
+        this.termsAndCondition
+    )
+}
+
+fun ServiceEntity.toModelWithProp() : Service {
+    return Service (
+        this.id,
+        this.serviceCode,
+        this.serviceName,
+        this.serviceType,
+        this.description,
+        this.minimumPrice,
+        this.maximalPrice,
+        this.estimationTime,
+        this.termsAndCondition,
+        this.images.map { it.toModel() },
+        this.mappingServiceProperties
+//        this.orders.map { it.toModel() } //TODO: after order api developed
+    )
+}
