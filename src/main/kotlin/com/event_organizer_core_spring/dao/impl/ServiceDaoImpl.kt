@@ -4,8 +4,10 @@ import com.event_organizer_core_spring.dao.ServiceDao
 import com.event_organizer_core_spring.model.entity.ServiceEntity
 import com.event_organizer_core_spring.repository.ServiceRepository
 import org.springframework.http.HttpStatus
+import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 
+@Component
 class ServiceDaoImpl (
     val serviceRepository: ServiceRepository
 ) : ServiceDao {

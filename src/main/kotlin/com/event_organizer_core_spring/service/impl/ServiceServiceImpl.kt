@@ -9,6 +9,7 @@ import com.event_organizer_core_spring.model.toEntity
 import com.event_organizer_core_spring.service.ServiceService
 import org.springframework.beans.factory.annotation.Autowired
 
+@org.springframework.stereotype.Service
 class ServiceServiceImpl (
     @Autowired
     val serviceDao: ServiceDao
