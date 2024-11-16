@@ -8,7 +8,9 @@ import com.event_organizer_core_spring.model.entity.toModel
 import com.event_organizer_core_spring.model.toEntity
 import com.event_organizer_core_spring.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
+@Service
 class UserServiceImpl(
     @Autowired
     val userDao: UserDao
