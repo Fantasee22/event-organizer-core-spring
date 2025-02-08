@@ -20,17 +20,21 @@ class ServiceDaoImpl (
         return serviceRepository.save(serviceEntity)
     }
 
-    override fun findServiceById(id: Long): ServiceEntity {
+    override fun findServiceById(id: Long): ServiceEntity? {
         return serviceRepository.findById(id).orElse(null)
     }
 
-    override fun findServiceById(id: Long, useException: Boolean): ServiceEntity {
+    override fun findServiceById(id: Long, useException: Boolean): ServiceEntity? {
         if (useException) {
             return serviceRepository.findById(id).orElseThrow {
                 ResponseStatusException(HttpStatus.NOT_FOUND, "Service not found")
             }
         }
         return serviceRepository.findById(id).orElse(null)
+    }
+
+    override fun getAllService(): List<ServiceEntity> {
+        return serviceRepository.findAll()
     }
 
 }

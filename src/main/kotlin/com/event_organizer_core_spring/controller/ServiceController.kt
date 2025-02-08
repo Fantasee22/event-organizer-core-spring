@@ -1,6 +1,8 @@
 package com.event_organizer_core_spring.controller
 
+import com.event_organizer_core_spring.core.dto.request.GenericByIdRequest
 import com.event_organizer_core_spring.dto.request.ServiceRequest
+import com.event_organizer_core_spring.dto.response.ListServiceResponse
 import com.event_organizer_core_spring.dto.response.ServiceResponse
 import com.event_organizer_core_spring.service.ServiceService
 import jakarta.validation.Valid
@@ -23,5 +25,15 @@ class ServiceController (
     @GetMapping("/edit")
     fun editService(@Valid request: ServiceRequest): ServiceResponse {
         return serviceService.editService(request)
+    }
+
+    @GetMapping("/getById")
+    fun getServiceById(@Valid request: GenericByIdRequest): ServiceResponse {
+        return serviceService.getServiceById(request)
+    }
+
+    @GetMapping("/getAll")
+    fun getAllService(): ListServiceResponse {
+        return ListServiceResponse(serviceService.getAllService())
     }
 }
