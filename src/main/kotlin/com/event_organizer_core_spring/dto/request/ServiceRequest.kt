@@ -20,7 +20,6 @@ data class ServiceRequest (
     @Max(value = 100, message = "serviceName max length is 20")
     val serviceType: String = "",
 
-    @NotEmpty
     @Max(value = 2000, message = "description max length is 2000")
     val description: String = "",
 
@@ -36,8 +35,10 @@ data class ServiceRequest (
     @PositiveOrZero
     val estimationTime: Float = 0.00f,
 
-    @Column(name = "terms_and_condition", nullable = false, unique = false, length = 2000)
+    @Max(value = 2000, message = "description max length is 2000")
     val termsAndCondition: String = "",
+
+    val isActive: Boolean = false,
 
     override val id: Long? = null
 ) : GenericByIdRequest()

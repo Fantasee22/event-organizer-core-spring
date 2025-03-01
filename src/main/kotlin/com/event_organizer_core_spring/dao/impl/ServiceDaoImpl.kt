@@ -37,4 +37,13 @@ class ServiceDaoImpl (
         return serviceRepository.findAll()
     }
 
+    override fun disableService(id: Long): ServiceEntity? {
+        var serviceEntity = findServiceById(id ?: 0, true)
+        if (serviceEntity != null) {
+            serviceEntity.isActive = false
+            return serviceRepository.save(serviceEntity)
+        } else {
+            return serviceEntity
+        }
+    }
 }

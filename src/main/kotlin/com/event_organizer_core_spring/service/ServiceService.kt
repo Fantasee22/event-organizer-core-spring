@@ -10,4 +10,5 @@ interface ServiceService {
     fun editService(serviceRequest: ServiceRequest) : ServiceResponse
     fun getServiceById (genericByIdRequest: GenericByIdRequest) : ServiceResponse
     fun getAllService() : List<ServiceResponse>
+    fun disableService(genericByIdRequest: GenericByIdRequest) : ServiceResponse
 }

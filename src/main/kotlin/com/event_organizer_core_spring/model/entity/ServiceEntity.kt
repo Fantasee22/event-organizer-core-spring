@@ -35,6 +35,9 @@ class ServiceEntity (
     @Column(name = "terms_and_condition", nullable = false, unique = false, length = 2000)
     val termsAndCondition: String,
 
+    @Column(name = "is_active", nullable = false, unique = false)
+    var isActive: Boolean,
+
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinColumn(name = "service_id")
     val images: List<ServiceImageEntity> = listOf(),
@@ -57,7 +60,8 @@ fun ServiceEntity.toModel() : Service {
         this.minimumPrice,
         this.maximalPrice,
         this.estimationTime,
-        this.termsAndCondition
+        this.termsAndCondition,
+        this.isActive
     )
 }
 
@@ -72,6 +76,7 @@ fun ServiceEntity.toModelWithProp() : Service {
         this.maximalPrice,
         this.estimationTime,
         this.termsAndCondition,
+        this.isActive,
         this.images.map { it.toModel() },
         this.mappingServiceProperties
 //        this.orders.map { it.toModel() } //TODO: after order api developed

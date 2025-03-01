@@ -21,6 +21,8 @@ class Service (
 
     val termsAndCondition: String,
 
+    val isActive: Boolean,
+
     val images: List<ServiceImage> = listOf(),
 
     val mappingServiceProperties: List<String> = listOf(),
@@ -38,7 +40,8 @@ fun Service.toEntity(): ServiceEntity {
         this.minimumPrice,
         this.maximalPrice,
         this.estimationTime,
-        this.termsAndCondition
+        this.termsAndCondition,
+        this.isActive
 //        this.images.map { it.toEntity() },
 //        this.mappingServiceProperties,
 //        this.orders.map { it.toEntity() } //TODO: after order api developed
@@ -56,6 +59,7 @@ fun Service.toEntityWithProp(): ServiceEntity {
         this.maximalPrice,
         this.estimationTime,
         this.termsAndCondition,
+        this.isActive,
         this.images.map { it.toEntity() },
         this.mappingServiceProperties,
 //        this.orders.map { it.toEntity() } //TODO: after order api developed

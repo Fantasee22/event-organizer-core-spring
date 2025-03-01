@@ -9,4 +9,5 @@ interface ServiceDao {
     fun findServiceById(id: Long): ServiceEntity?
     fun findServiceById(id: Long, useException: Boolean): ServiceEntity?
     fun getAllService(): List<ServiceEntity>
+    fun disableService(id: Long): ServiceEntity?
 }

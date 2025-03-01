@@ -25,7 +25,8 @@ class ServiceServiceImpl (
             minimumPrice = serviceRequest.minimumPrice,
             maximalPrice = serviceRequest.maximalPrice,
             estimationTime = serviceRequest.estimationTime,
-            termsAndCondition = serviceRequest.termsAndCondition
+            termsAndCondition = serviceRequest.termsAndCondition,
+            isActive = true
         )
 
         val addedService = serviceDao.addService(service.toEntity()).toModel()
@@ -46,7 +47,8 @@ class ServiceServiceImpl (
             minimumPrice = serviceRequest.minimumPrice,
             maximalPrice = serviceRequest.maximalPrice,
             estimationTime = serviceRequest.estimationTime,
-            termsAndCondition = serviceRequest.termsAndCondition
+            termsAndCondition = serviceRequest.termsAndCondition,
+            isActive = serviceRequest.isActive
         )
 
         val editedService = serviceDao.editService(service.toEntity()).toModel()
@@ -70,10 +72,11 @@ class ServiceServiceImpl (
                 maximalPrice = serviceObj.maximalPrice,
                 estimationTime = serviceObj.estimationTime,
                 termsAndCondition = serviceObj.termsAndCondition,
+                isActive = serviceObj.isActive,
                 id = serviceObj.id
             )
         }
-        return ServiceResponse()
+        return ServiceResponse(id = 0)
     }
 
     override fun getAllService() : List<ServiceResponse> {
@@ -88,6 +91,7 @@ class ServiceServiceImpl (
                 maximalPrice = serviceObj.maximalPrice,
                 estimationTime = serviceObj.estimationTime,
                 termsAndCondition = serviceObj.termsAndCondition,
+                isActive = serviceObj.isActive,
                 id = serviceObj.id
             )
         }
@@ -103,10 +107,24 @@ class ServiceServiceImpl (
 //                minimumPrice = serviceObj.minimumPrice,
 //                maximalPrice = serviceObj.maximalPrice,
 //                estimationTime = serviceObj.estimationTime,
-//                termsAndCondition = serviceObj.termsAndCondition
+//                termsAndCondition = serviceObj.termsAndCondition,
+//                isActive = serviceObj.isActive
 //            )
 //            listOFServiceRes.add(serviceRes)
 //        }
         //endregion
+    }
+
+    override fun disableService(genericByIdRequest: GenericByIdRequest): ServiceResponse {
+        val disabledService = serviceDao.disableService(genericByIdRequest.id ?: 0)
+        if (disabledService != null) {
+            return ServiceResponse(
+                serviceName = disabledService.serviceName,
+                serviceCode = disabledService.serviceCode,
+                isActive = disabledService.isActive,
+                id = disabledService.id
+            )
+        }
+        return ServiceResponse(id = 0)
     }
 }

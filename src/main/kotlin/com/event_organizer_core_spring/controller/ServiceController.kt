@@ -36,4 +36,9 @@ class ServiceController (
     fun getAllService(): ListServiceResponse {
         return ListServiceResponse(serviceService.getAllService())
     }
+
+    @GetMapping("/disable")
+    fun disableService(@Valid request: GenericByIdRequest): ServiceResponse {
+        return serviceService.disableService(request)
+    }
 }

@@ -11,5 +11,6 @@ data class ServiceResponse (
     val maximalPrice: Double = 0.00,
     val estimationTime: Float = 0.00f,
     val termsAndCondition: String = "",
+    val isActive: Boolean = false,
     override val id: Long? = null
 ) : GenericByIdResponse()
