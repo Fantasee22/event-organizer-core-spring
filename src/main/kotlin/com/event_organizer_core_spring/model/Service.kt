@@ -32,7 +32,7 @@ class Service (
 
 fun Service.toEntity(): ServiceEntity {
     return ServiceEntity(
-        this.id,
+        this.id ?: 0,
         this.serviceCode,
         this.serviceName,
         this.serviceType,
@@ -50,7 +50,7 @@ fun Service.toEntity(): ServiceEntity {
 
 fun Service.toEntityWithProp(): ServiceEntity {
     return ServiceEntity(
-        this.id,
+        this.id ?: 0,
         this.serviceCode,
         this.serviceName,
         this.serviceType,

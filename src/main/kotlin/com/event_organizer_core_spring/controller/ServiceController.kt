@@ -8,6 +8,8 @@ import com.event_organizer_core_spring.service.ServiceService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -17,28 +19,44 @@ class ServiceController (
     @Autowired
     val serviceService: ServiceService
 ) {
-    @GetMapping("/add")
-    fun addService(@Valid request: ServiceRequest): ServiceResponse {
+    @PostMapping("/add")
+    fun addService(
+        @Valid
+        @RequestBody
+        request: ServiceRequest
+    ): ServiceResponse {
         return serviceService.addService(request)
     }
 
-    @GetMapping("/edit")
-    fun editService(@Valid request: ServiceRequest): ServiceResponse {
+    @PostMapping("/edit")
+    fun editService(
+        @Valid
+        @RequestBody
+        request: ServiceRequest
+    ): ServiceResponse {
         return serviceService.editService(request)
     }
 
-    @GetMapping("/getById")
-    fun getServiceById(@Valid request: GenericByIdRequest): ServiceResponse {
+    @PostMapping("/getById")
+    fun getServiceById(
+        @Valid
+        @RequestBody
+        request: GenericByIdRequest
+    ): ServiceResponse {
         return serviceService.getServiceById(request)
     }
 
-    @GetMapping("/getAll")
+    @PostMapping("/getAll")
     fun getAllService(): ListServiceResponse {
         return ListServiceResponse(serviceService.getAllService())
     }
 
-    @GetMapping("/disable")
-    fun disableService(@Valid request: GenericByIdRequest): ServiceResponse {
+    @PostMapping("/disable")
+    fun disableService(
+        @Valid
+        @RequestBody
+        request: GenericByIdRequest
+    ): ServiceResponse {
         return serviceService.disableService(request)
     }
 }

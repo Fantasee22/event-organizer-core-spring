@@ -40,6 +40,7 @@ class ServiceServiceImpl (
 
     override fun editService(serviceRequest: ServiceRequest): ServiceResponse {
         val service = Service(
+            id = serviceRequest.id,
             serviceCode = serviceRequest.serviceCode,
             serviceName = serviceRequest.serviceName,
             serviceType = serviceRequest.serviceType,

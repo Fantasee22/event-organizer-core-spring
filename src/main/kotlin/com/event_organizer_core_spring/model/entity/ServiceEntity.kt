@@ -11,7 +11,7 @@ class ServiceEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long?,
+    val id: Long,
 
     @Column(name = "service_code", nullable = false, unique = true, length = 50)
     val serviceCode: String,
@@ -50,7 +50,23 @@ class ServiceEntity (
 
     @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
     val orders: List<OrderEntity> = listOf()
-)
+) {
+    constructor() : this(
+        id = 0L,
+        serviceCode = "",
+        serviceName = "",
+        serviceType = "",
+        description = "",
+        minimumPrice = 0.0,
+        maximalPrice = 0.0,
+        estimationTime = 0f,
+        termsAndCondition = "",
+        isActive = true,
+        images = listOf(),
+        mappingServiceProperties = listOf(),
+        orders = listOf()
+    )
+}
 
 fun ServiceEntity.toModel() : Service {
     return Service (
