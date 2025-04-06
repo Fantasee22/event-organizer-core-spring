@@ -1,3 +1,6 @@
+//package com.event_organizer_core_spring.core.controller
+
+//import com.event_organizer_core_spring.core.repository.GenericRepository
 import org.springframework.web.bind.annotation.*
 
 @RestController

@@ -1,3 +1,5 @@
+//package com.event_organizer_core_spring.core.repository
+
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
