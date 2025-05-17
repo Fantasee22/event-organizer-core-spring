@@ -34,4 +34,16 @@ class CustomerEntity (
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     val orders: List<OrderEntity> = listOf()
-)
+) {
+    constructor() : this (
+        id = 0L,
+        customerNo = "",
+        customerName = "",
+        phoneNumber = "",
+        address = "",
+        idNo = null,
+        birthDate = null,
+        email = "",
+        orders = listOf()
+    )
+}

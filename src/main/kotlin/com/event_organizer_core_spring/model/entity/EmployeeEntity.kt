@@ -33,4 +33,15 @@ class EmployeeEntity (
     @OneToMany(mappedBy = "pic", fetch = FetchType.LAZY)
     val orders: List<OrderEntity> = listOf()
 
-)
+) {
+    constructor() : this (
+        id = 0L,
+        employeeNo = "",
+        employeeName = "",
+        phoneNumber = null,
+        isActive = false,
+        idNo = "",
+        birthDate = null,
+        orders = listOf()
+    )
+}

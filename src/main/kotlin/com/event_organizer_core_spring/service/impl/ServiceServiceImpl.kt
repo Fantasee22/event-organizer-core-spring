@@ -97,23 +97,6 @@ class ServiceServiceImpl (
             )
         }
         return listOFServiceRes
-        //region MANUAL MAPPING
-//        val listOFServiceRes : MutableList<ServiceResponse> = mutableListOf<ServiceResponse>()
-//        for (serviceObj in listOfServices) {
-//            val serviceRes = ServiceResponse (
-//                serviceCode = serviceObj.serviceCode,
-//                serviceName = serviceObj.serviceName,
-//                serviceType = serviceObj.serviceType,
-//                description = serviceObj.description,
-//                minimumPrice = serviceObj.minimumPrice,
-//                maximalPrice = serviceObj.maximalPrice,
-//                estimationTime = serviceObj.estimationTime,
-//                termsAndCondition = serviceObj.termsAndCondition,
-//                isActive = serviceObj.isActive
-//            )
-//            listOFServiceRes.add(serviceRes)
-//        }
-        //endregion
     }
 
     override fun disableService(genericByIdRequest: GenericByIdRequest): ServiceResponse {
