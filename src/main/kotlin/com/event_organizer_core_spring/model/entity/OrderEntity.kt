@@ -7,6 +7,7 @@ import org.springframework.boot.web.embedded.netty.NettyWebServer
 import java.time.LocalDateTime
 
 @Entity
+@Table(name = "order")
 class OrderEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@ package com.event_organizer_core_spring.model.entity
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "order_request")
 class OrderRequestEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
