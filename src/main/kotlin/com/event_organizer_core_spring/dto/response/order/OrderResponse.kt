@@ -6,10 +6,10 @@ import java.time.LocalDateTime
 
 class OrderResponse (
     override val id: Long? = null,
-    val orderNo: String,
-    val totalPrice: Double,
-    val totalPaid: Double,
-    val orderStatus: OrderStatus,
-    val startTime: LocalDateTime,
-    val endTime: LocalDateTime,
+    val orderNo: String = "",
+    val totalPrice: Double = 0.0,
+    val totalPaid: Double = 0.0,
+    val orderStatus: OrderStatus = OrderStatus.NEW,
+    val startTime: LocalDateTime = LocalDateTime.now(),
+    val endTime: LocalDateTime = LocalDateTime.now(),
 ) : GenericByIdResponse()

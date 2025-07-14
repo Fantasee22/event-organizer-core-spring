@@ -29,5 +29,15 @@ class OrderRequest (
     val startTime: LocalDateTime,
 
     @NotEmpty
-    val endTime: LocalDateTime
+    val endTime: LocalDateTime,
+
+    @NotEmpty
+    val serviceId: Long,
+
+    @NotEmpty
+    val customerId: Long,
+
+    @NotEmpty
+    val picId: Long
 ) : GenericByIdRequest()
+
