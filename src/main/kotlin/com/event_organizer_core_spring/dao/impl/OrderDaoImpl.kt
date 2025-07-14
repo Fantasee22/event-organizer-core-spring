@@ -22,14 +22,14 @@ class OrderDaoImpl (
 
     override fun findOrderById(id: Long): OrderEntity {
         return orderRepository.findById(id).orElseThrow {
-            ResponseStatusException(HttpStatus.NOT_FOUND, "Service not found")
+            ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found")
         }
     }
 
     override fun findOrderById(id: Long, useException: Boolean): OrderEntity? {
         if (useException) {
             return orderRepository.findById(id).orElseThrow {
-                ResponseStatusException(HttpStatus.NOT_FOUND, "Service not found")
+                ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found")
             }
         }
         return orderRepository.findById(id).orElse(null)

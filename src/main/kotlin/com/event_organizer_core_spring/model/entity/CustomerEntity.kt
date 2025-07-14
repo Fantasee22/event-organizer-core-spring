@@ -1,5 +1,6 @@
 package com.event_organizer_core_spring.model.entity
 
+import com.event_organizer_core_spring.model.Customer
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -12,28 +13,28 @@ class CustomerEntity (
     val id: Long,
 
     @Column(name = "customer_no", nullable = false, unique = true, length = 50)
-    val customerNo: String,
+    var customerNo: String,
 
     @Column(name = "customer_name", nullable = false)
-    val customerName: String,
+    var customerName: String,
 
     @Column(name = "phone_number", nullable = false, length = 20)
-    val phoneNumber: String,
+    var phoneNumber: String,
 
     @Column(name = "address", nullable = false, length = 500)
-    val address: String,
+    var address: String,
 
     @Column(name = "id_no", nullable = true, length = 50)
-    val idNo: String?,
+    var idNo: String?,
 
     @Column(name = "birth_date", nullable = true)
-    val birthDate: LocalDateTime?,
+    var birthDate: LocalDateTime?,
 
     @Column(name = "email", nullable = false, length = 320)
-    val email: String,
+    var email: String,
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    val orders: List<OrderEntity> = listOf()
+    var orders: MutableList<OrderEntity> = mutableListOf()
 ) {
     constructor() : this (
         id = 0L,
@@ -44,6 +45,33 @@ class CustomerEntity (
         idNo = null,
         birthDate = null,
         email = "",
-        orders = listOf()
+        orders = mutableListOf()
+    )
+}
+
+fun CustomerEntity.toModel() : Customer {
+    return Customer(
+        id = this.id,
+        customerNo = this.customerNo,
+        customerName = this.customerName,
+        phoneNumber = this.phoneNumber,
+        address = this.address,
+        idNo = this.idNo,
+        birthDate = this.birthDate,
+        email = this.email
+    )
+}
+
+fun CustomerEntity.toModelWithProp() : Customer {
+    return Customer(
+        id = this.id,
+        customerNo = this.customerNo,
+        customerName = this.customerName,
+        phoneNumber = this.phoneNumber,
+        address = this.address,
+        idNo = this.idNo,
+        birthDate = this.birthDate,
+        email = this.email,
+        orders = this.orders.map { it.toModel() }.toMutableList()
     )
 }

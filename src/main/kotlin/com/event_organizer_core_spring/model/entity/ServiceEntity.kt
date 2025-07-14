@@ -96,7 +96,7 @@ fun ServiceEntity.toModelWithProp() : Service {
         this.termsAndCondition,
         this.isActive,
         this.images.map { it.toModel() },
-        this.mappingServiceProperties
-//        this.orders.map { it.toModel() } //TODO: after order api developed
+        this.mappingServiceProperties,
+        this.orders.map { it.toModel() } //TODO: after order api developed
     )
 }

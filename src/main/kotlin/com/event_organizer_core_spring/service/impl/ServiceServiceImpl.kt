@@ -62,7 +62,7 @@ class ServiceServiceImpl (
     }
 
     override fun getServiceById(genericByIdRequest: GenericByIdRequest): ServiceResponse {
-        val serviceObj = serviceDao.findServiceById(genericByIdRequest.id ?: 0)
+        val serviceObj = serviceDao.findServiceById(genericByIdRequest.id ?: 0, useException = false)
         if (serviceObj != null) {
             return ServiceResponse(
                 serviceCode = serviceObj.serviceCode,
