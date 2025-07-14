@@ -20,8 +20,10 @@ class OrderDaoImpl (
         return orderRepository.save(orderEntity)
     }
 
-    override fun findOrderById(id: Long): OrderEntity? {
-        return orderRepository.findById(id).orElse(null)
+    override fun findOrderById(id: Long): OrderEntity {
+        return orderRepository.findById(id).orElseThrow {
+            ResponseStatusException(HttpStatus.NOT_FOUND, "Service not found")
+        }
     }
 
     override fun findOrderById(id: Long, useException: Boolean): OrderEntity? {

@@ -3,11 +3,10 @@ package com.event_organizer_core_spring.model.entity
 import com.event_organizer_core_spring.constant.OrderStatus
 import com.event_organizer_core_spring.model.Order
 import jakarta.persistence.*
-import org.springframework.boot.web.embedded.netty.NettyWebServer
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_main")
 class OrderEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

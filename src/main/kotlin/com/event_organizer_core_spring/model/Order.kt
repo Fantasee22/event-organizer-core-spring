@@ -12,9 +12,9 @@ class Order (
     val orderStatus: OrderStatus,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
-    val service: ServiceEntity?,
-    val customer: CustomerEntity?,
-    val pic: EmployeeEntity?,
+    val service: ServiceEntity,
+    val customer: CustomerEntity,
+    val pic: EmployeeEntity,
     val payments: List<PaymentEntity> = listOf(),
     val orderRequests: List<OrderRequestEntity> = listOf(),
     val orderedProperties: List<OrderedPropertyEntity> = listOf()
