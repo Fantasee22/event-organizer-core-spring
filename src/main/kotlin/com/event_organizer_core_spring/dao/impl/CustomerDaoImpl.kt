@@ -36,7 +36,7 @@ class CustomerDaoImpl (
     }
 
     override fun getAllCustomer(): List<CustomerEntity> {
-        TODO("Not yet implemented")
+        return customerRepository.findAll()
     }
 
 }
