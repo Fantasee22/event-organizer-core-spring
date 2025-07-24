@@ -13,8 +13,9 @@ import com.event_organizer_core_spring.model.entity.toModel
 import com.event_organizer_core_spring.model.toEntity
 import com.event_organizer_core_spring.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
-import java.time.LocalDateTime
+import org.springframework.stereotype.Service
 
+@Service
 class CustomerServiceImpl (
     @Autowired
     val customerDao: CustomerDao
