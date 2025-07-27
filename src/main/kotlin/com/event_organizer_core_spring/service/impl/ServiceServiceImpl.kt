@@ -4,18 +4,22 @@ import com.event_organizer_core_spring.core.dto.request.GenericByIdRequest
 import com.event_organizer_core_spring.dao.ServiceDao
 import com.event_organizer_core_spring.dto.request.ServiceRequest
 import com.event_organizer_core_spring.dto.response.ServiceResponse
+import com.event_organizer_core_spring.generic.GenericServiceImpl
 import com.event_organizer_core_spring.model.Service
 import com.event_organizer_core_spring.model.entity.ServiceEntity
 import com.event_organizer_core_spring.model.entity.toModel
 import com.event_organizer_core_spring.model.toEntity
+import com.event_organizer_core_spring.repository.ServiceRepository
 import com.event_organizer_core_spring.service.ServiceService
 import org.springframework.beans.factory.annotation.Autowired
 
 @org.springframework.stereotype.Service
 class ServiceServiceImpl (
     @Autowired
-    val serviceDao: ServiceDao
-) : ServiceService {
+    val serviceDao: ServiceDao,
+    @Autowired
+    val serviceRepository: ServiceRepository
+) : GenericServiceImpl<ServiceEntity, Long>(serviceRepository), ServiceService {
     override fun addService(serviceRequest: ServiceRequest): ServiceResponse {
         val service = Service(
             serviceCode = serviceRequest.serviceCode,

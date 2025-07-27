@@ -3,9 +3,11 @@ package com.event_organizer_core_spring.service
 import com.event_organizer_core_spring.core.dto.request.GenericByIdRequest
 import com.event_organizer_core_spring.dto.request.ServiceRequest
 import com.event_organizer_core_spring.dto.response.ServiceResponse
+import com.event_organizer_core_spring.generic.GenericService
+import com.event_organizer_core_spring.model.entity.ServiceEntity
 import org.springframework.stereotype.Service
 
-interface ServiceService {
+interface ServiceService : GenericService<ServiceEntity, Long> {
     fun addService(serviceRequest: ServiceRequest) : ServiceResponse
     fun editService(serviceRequest: ServiceRequest) : ServiceResponse
     fun getServiceById (genericByIdRequest: GenericByIdRequest) : ServiceResponse

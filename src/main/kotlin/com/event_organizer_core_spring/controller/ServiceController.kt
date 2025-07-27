@@ -4,6 +4,8 @@ import com.event_organizer_core_spring.core.dto.request.GenericByIdRequest
 import com.event_organizer_core_spring.dto.request.ServiceRequest
 import com.event_organizer_core_spring.dto.response.ListServiceResponse
 import com.event_organizer_core_spring.dto.response.ServiceResponse
+import com.event_organizer_core_spring.generic.GenericController
+import com.event_organizer_core_spring.model.entity.ServiceEntity
 import com.event_organizer_core_spring.service.ServiceService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController
 class ServiceController (
     @Autowired
     val serviceService: ServiceService
-) {
+) : GenericController<ServiceEntity, Long>(serviceService) {
     @PostMapping("/add")
     fun addService(
         @Valid
