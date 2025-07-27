@@ -11,45 +11,45 @@ class ServiceEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Column(name = "service_code", nullable = false, unique = true, length = 50)
-    val serviceCode: String,
+    var serviceCode: String,
 
     @Column(name = "service_name", nullable = false, unique = false, length = 100)
-    val serviceName: String,
+    var serviceName: String,
 
     @Column(name = "service_type", nullable = false, unique = false, length = 20)
-    val serviceType: String,
+    var serviceType: String,
 
     @Column(name = "description", nullable = false, unique = false, length = 2000)
-    val description: String,
+    var description: String,
 
     @Column(name = "minimum_price", nullable = false, unique = false)
-    val minimumPrice: Double,
+    var minimumPrice: Double,
 
     @Column(name = "maximal_price", nullable = false, unique = false)
-    val maximalPrice: Double,
+    var maximalPrice: Double,
 
     @Column(name = "estimation_time", nullable = false, unique = false)
-    val estimationTime: Float,
+    var estimationTime: Float,
 
     @Column(name = "terms_and_condition", nullable = false, unique = false, length = 2000)
-    val termsAndCondition: String,
+    var termsAndCondition: String,
 
     @Column(name = "is_active", nullable = false, unique = false)
     var isActive: Boolean,
 
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinColumn(name = "service_id")
-    val images: List<ServiceImageEntity> = listOf(),
+    var images: MutableList<ServiceImageEntity> = mutableListOf(),
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Column(name = "mapping_service_properties", nullable = false)
-    val mappingServiceProperties: List<String> = listOf(),
+    var mappingServiceProperties: MutableList<String> = mutableListOf(),
 
     @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
-    val orders: List<OrderEntity> = listOf()
+    var orders: MutableList<OrderEntity> = mutableListOf()
 ) {
     constructor() : this(
         id = 0L,
@@ -62,9 +62,9 @@ class ServiceEntity (
         estimationTime = 0f,
         termsAndCondition = "",
         isActive = true,
-        images = listOf(),
-        mappingServiceProperties = listOf(),
-        orders = listOf()
+        images = mutableListOf(),
+        mappingServiceProperties = mutableListOf(),
+        orders = mutableListOf()
     )
 }
 
@@ -95,8 +95,8 @@ fun ServiceEntity.toModelWithProp() : Service {
         this.estimationTime,
         this.termsAndCondition,
         this.isActive,
-        this.images.map { it.toModel() },
+        this.images.map { it.toModel() }.toMutableList(),
         this.mappingServiceProperties,
-        this.orders.map { it.toModel() } //TODO: after order api developed
+        this.orders.map { it.toModel() }.toMutableList() //TODO: after order api developed
     )
 }

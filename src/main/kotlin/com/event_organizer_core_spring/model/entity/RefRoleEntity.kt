@@ -8,14 +8,14 @@ class RefRoleEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Column(name = "role_code", nullable = false, unique = true, length = 50)
-    val roleCode: String,
+    var roleCode: String,
 
     @Column(name = "role_value", nullable = false, length = 200)
-    val roleValue: String,
+    var roleValue: String,
 
     @Column(name = "description", nullable = true, length = 1000)
-    val description: String?
+    var description: String?
 )

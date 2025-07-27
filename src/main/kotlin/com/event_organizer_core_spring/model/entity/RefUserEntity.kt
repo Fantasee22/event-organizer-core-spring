@@ -9,22 +9,22 @@ class RefUserEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long? = null,
+    var id: Long? = null,
 
     @Column(name = "user_name", nullable = false, unique = true, length = 100)
-    val userName: String,
+    var userName: String,
 
     @Column(name = "password", nullable = false, length = 100)
-    val password: String,
+    var password: String,
 
     @Column(name = "is_locked", nullable = false)
-    val isLocked: Boolean,
+    var isLocked: Boolean,
 
     @Column(name = "is_active", nullable = false)
-    val isActive: Boolean,
+    var isActive: Boolean,
 
     @Column(name = "role_code", nullable = false, length = 50)
-    val roleCode: String,
+    var roleCode: String,
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = true)

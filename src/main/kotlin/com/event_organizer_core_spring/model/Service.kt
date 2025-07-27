@@ -13,9 +13,9 @@ class Service (
     val estimationTime: Float,
     val termsAndCondition: String,
     val isActive: Boolean,
-    val images: List<ServiceImage> = listOf(),
-    val mappingServiceProperties: List<String> = listOf(),
-    val orders: List<Order> = listOf()
+    val images: MutableList<ServiceImage> = mutableListOf(),
+    val mappingServiceProperties: MutableList<String> = mutableListOf(),
+    val orders: MutableList<Order> = mutableListOf()
 )
 
 fun Service.toEntity(): ServiceEntity {
@@ -45,8 +45,8 @@ fun Service.toEntityWithProp(): ServiceEntity {
         this.estimationTime,
         this.termsAndCondition,
         this.isActive,
-        this.images.map { it.toEntity() },
+        this.images.map { it.toEntity() }.toMutableList(),
         this.mappingServiceProperties,
-        this.orders.map { it.toEntity() } //TODO: after order api developed
+        this.orders.map { it.toEntity() }.toMutableList() //TODO: after order api developed
     )
 }

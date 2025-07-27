@@ -8,9 +8,9 @@ class PropertyImageEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Lob
     @Column(name = "image_data", nullable = false)
-    val imageData: ByteArray
+    var imageData: ByteArray
 )

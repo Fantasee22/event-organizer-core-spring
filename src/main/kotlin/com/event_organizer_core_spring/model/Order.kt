@@ -15,9 +15,9 @@ class Order (
     val service: ServiceEntity,
     val customer: CustomerEntity,
     val pic: EmployeeEntity,
-    val payments: List<PaymentEntity> = listOf(),
-    val orderRequests: List<OrderRequestEntity> = listOf(),
-    val orderedProperties: List<OrderedPropertyEntity> = listOf()
+    val payments: MutableList<PaymentEntity> = mutableListOf(),
+    val orderRequests: MutableList<OrderRequestEntity> = mutableListOf(),
+    val orderedProperties: MutableList<OrderedPropertyEntity> = mutableListOf()
 )
 
 fun Order.toEntity(): OrderEntity {

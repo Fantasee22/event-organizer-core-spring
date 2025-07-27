@@ -11,47 +11,47 @@ class OrderEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Column(name = "order_no", nullable = false, unique = true)
-    val orderNo: String,
+    var orderNo: String,
 
     @Column(name = "total_price", nullable = false, unique = false)
-    val totalPrice: Double,
+    var totalPrice: Double,
 
     @Column(name = "total_paid", nullable = false, unique = false)
-    val totalPaid: Double,
+    var totalPaid: Double,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "order_status", nullable = false, unique = false)
-    val orderStatus: OrderStatus,
+    var orderStatus: OrderStatus,
 
     @Column(name = "start_time", nullable = false, unique = false)
-    val startTime: LocalDateTime,
+    var startTime: LocalDateTime,
 
     @Column(name = "end_time", nullable = false, unique = false)
-    val endTime: LocalDateTime,
+    var endTime: LocalDateTime,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "service_id", nullable = false, unique = false)
-    val service: ServiceEntity,
+    var service: ServiceEntity,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false, unique = false)
-    val customer: CustomerEntity,
+    var customer: CustomerEntity,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pic_id", nullable = false, unique = false)
-    val pic: EmployeeEntity,
+    var pic: EmployeeEntity,
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    val payments: List<PaymentEntity> = listOf(),
+    var payments: MutableList<PaymentEntity> = mutableListOf(),
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    val orderRequests: List<OrderRequestEntity> = listOf(),
+    var orderRequests: MutableList<OrderRequestEntity> = mutableListOf(),
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    val orderedProperties: List<OrderedPropertyEntity> = listOf()
+    var orderedProperties: MutableList<OrderedPropertyEntity> = mutableListOf()
 ) {
     constructor() : this (
         id = 0L,
@@ -64,9 +64,9 @@ class OrderEntity(
         service = ServiceEntity(),
         customer = CustomerEntity(),
         pic = EmployeeEntity(),
-        payments = listOf(),
-        orderRequests = listOf(),
-        orderedProperties = listOf()
+        payments = mutableListOf(),
+        orderRequests = mutableListOf(),
+        orderedProperties = mutableListOf()
     )
 }
 

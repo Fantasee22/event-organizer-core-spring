@@ -10,28 +10,28 @@ class EmployeeEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Column(name = "employee_no", nullable = false, unique = true, length = 50)
-    val employeeNo: String,
+    var employeeNo: String,
 
     @Column(name = "employee_name", nullable = false, length = 100)
-    val employeeName: String,
+    var employeeName: String,
 
     @Column(name = "phone_number", nullable = true, length = 20)
-    val phoneNumber: String?,
+    var phoneNumber: String?,
 
     @Column(name = "is_active", nullable = false)
-    val isActive: Boolean,
+    var isActive: Boolean,
 
     @Column(name = "id_no", nullable = false, length = 50)
-    val idNo: String,
+    var idNo: String,
 
     @Column(name = "birth_date", nullable = true)
-    val birthDate: LocalDateTime?,
+    var birthDate: LocalDateTime?,
 
     @OneToMany(mappedBy = "pic", fetch = FetchType.LAZY)
-    val orders: List<OrderEntity> = listOf()
+    var orders: MutableList<OrderEntity> = mutableListOf()
 
 ) {
     constructor() : this (
@@ -42,6 +42,6 @@ class EmployeeEntity (
         isActive = false,
         idNo = "",
         birthDate = null,
-        orders = listOf()
+        orders = mutableListOf()
     )
 }

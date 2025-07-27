@@ -8,13 +8,13 @@ class OrderedPropertyEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false, unique = false)
-    val order: OrderEntity,
+    var order: OrderEntity,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "property_id", nullable = false, unique = false)
-    val property: PropertyEntity,
+    var property: PropertyEntity,
 )
