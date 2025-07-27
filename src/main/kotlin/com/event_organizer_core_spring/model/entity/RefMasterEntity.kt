@@ -9,14 +9,14 @@ class RefMasterEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Column(name = "master_code", nullable = false, unique = true, length = 50)
-    val masterCode: String,
+    var masterCode: String,
 
     @Column(name = "master_value", nullable = false, length = 200)
-    val masterValue: String,
+    var masterValue: String,
 
     @Column(name = "description", nullable = true, length = 1000)
-    val description: String?
+    var description: String?
 ) : BaseEntity() //ToDo: check if base entity is declared right way

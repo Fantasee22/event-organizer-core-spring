@@ -11,28 +11,28 @@ class PaymentEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @Column(name = "transaction_no", nullable = false, unique = true)
-    val transactionNo: String,
+    var transactionNo: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false, unique = false)
-    val order: OrderEntity,
+    var order: OrderEntity,
 
     @Column(name = "installment_price", nullable = false, unique = false)
-    val installmentPrice: Double,
+    var installmentPrice: Double,
 
     @Column(name = "paid_price", nullable = false, unique = false)
-    val paidPrice: Double,
+    var paidPrice: Double,
 
     @Column(name = "pay_datetime", nullable = false, unique = false)
-    val payDatetime: LocalDateTime,
+    var payDatetime: LocalDateTime,
 
     @Column(name = "due_date", nullable = false, unique = false)
-    val dueDate: LocalDateTime,
+    var dueDate: LocalDateTime,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_method", nullable = false, unique = false)
-    val paymentMethod: PaymentMethod,
+    var paymentMethod: PaymentMethod,
 )

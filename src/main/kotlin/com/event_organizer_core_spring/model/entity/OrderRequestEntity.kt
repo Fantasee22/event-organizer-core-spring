@@ -8,15 +8,15 @@ class OrderRequestEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long,
+    var id: Long,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false, unique = false)
-    val order: OrderEntity,
+    var order: OrderEntity,
 
     @Column(name = "property_attribute_code", nullable = false, unique = true)
-    val propertyAttributeCode: String,
+    var propertyAttributeCode: String,
 
     @Column(name = "request_value", nullable = false, unique = true)
-    val requestValue: String
+    var requestValue: String
 )
