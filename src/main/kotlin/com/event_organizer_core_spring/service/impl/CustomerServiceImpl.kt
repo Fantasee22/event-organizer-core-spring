@@ -6,11 +6,13 @@ import com.event_organizer_core_spring.dto.request.customer.CustomerRequest
 import com.event_organizer_core_spring.dto.response.ServiceResponse
 import com.event_organizer_core_spring.dto.response.customer.CustomerResponse
 import com.event_organizer_core_spring.dto.response.customer.ListCustomerResponse
+import com.event_organizer_core_spring.generic.GenericServiceImpl
 import com.event_organizer_core_spring.model.Customer
 import com.event_organizer_core_spring.model.Order
 import com.event_organizer_core_spring.model.entity.CustomerEntity
 import com.event_organizer_core_spring.model.entity.toModel
 import com.event_organizer_core_spring.model.toEntity
+import com.event_organizer_core_spring.repository.CustomerRepository
 import com.event_organizer_core_spring.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -18,8 +20,10 @@ import org.springframework.stereotype.Service
 @Service
 class CustomerServiceImpl (
     @Autowired
-    val customerDao: CustomerDao
-) : CustomerService
+    val customerDao: CustomerDao,
+    @Autowired
+    val customerRepository: CustomerRepository
+) : GenericServiceImpl<CustomerEntity, Long>(customerRepository), CustomerService
 {
     override fun addCustomer(customerRequest: CustomerRequest): CustomerResponse {
         val customer = Customer(

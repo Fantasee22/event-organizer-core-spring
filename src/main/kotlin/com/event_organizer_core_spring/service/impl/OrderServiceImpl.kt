@@ -5,12 +5,11 @@ import com.event_organizer_core_spring.dao.OrderDao
 import com.event_organizer_core_spring.dao.ServiceDao
 import com.event_organizer_core_spring.dto.request.order.OrderRequest
 import com.event_organizer_core_spring.dto.response.order.OrderResponse
+import com.event_organizer_core_spring.generic.GenericServiceImpl
 import com.event_organizer_core_spring.model.Order
-import com.event_organizer_core_spring.model.entity.CustomerEntity
-import com.event_organizer_core_spring.model.entity.EmployeeEntity
-import com.event_organizer_core_spring.model.entity.OrderEntity
-import com.event_organizer_core_spring.model.entity.toModel
+import com.event_organizer_core_spring.model.entity.*
 import com.event_organizer_core_spring.model.toEntity
+import com.event_organizer_core_spring.repository.OrderRepository
 import com.event_organizer_core_spring.service.OrderService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -20,8 +19,10 @@ class OrderServiceImpl (
     @Autowired
     val orderDao: OrderDao,
     @Autowired
-    val serviceDao: ServiceDao
-) : OrderService {
+    val serviceDao: ServiceDao,
+    @Autowired
+    val orderRepository: OrderRepository
+) : GenericServiceImpl<OrderEntity, Long>(orderRepository), OrderService {
     override fun addOrder(orderRequest: OrderRequest): OrderResponse {
         val order = Order(
             orderNo = orderRequest.orderNo,

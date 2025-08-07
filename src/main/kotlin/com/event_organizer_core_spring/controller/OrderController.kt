@@ -6,6 +6,8 @@ import com.event_organizer_core_spring.dto.request.order.OrderRequest
 import com.event_organizer_core_spring.dto.response.ServiceResponse
 import com.event_organizer_core_spring.dto.response.order.ListOrderResponse
 import com.event_organizer_core_spring.dto.response.order.OrderResponse
+import com.event_organizer_core_spring.generic.GenericController
+import com.event_organizer_core_spring.model.entity.OrderEntity
 import com.event_organizer_core_spring.service.OrderService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController
 class OrderController (
     @Autowired
     val orderService: OrderService
-) {
+) : GenericController<OrderEntity, Long>(orderService) {
     @PostMapping("/add")
     fun addOrder(
         @Valid

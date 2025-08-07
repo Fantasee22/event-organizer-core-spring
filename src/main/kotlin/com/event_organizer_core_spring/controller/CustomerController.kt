@@ -4,6 +4,8 @@ import com.event_organizer_core_spring.core.dto.request.GenericByIdRequest
 import com.event_organizer_core_spring.dto.request.customer.CustomerRequest
 import com.event_organizer_core_spring.dto.response.customer.CustomerResponse
 import com.event_organizer_core_spring.dto.response.customer.ListCustomerResponse
+import com.event_organizer_core_spring.generic.GenericController
+import com.event_organizer_core_spring.model.entity.CustomerEntity
 import com.event_organizer_core_spring.service.CustomerService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 class CustomerController (
     @Autowired
     val customerService: CustomerService
-) {
+) : GenericController<CustomerEntity, Long>(customerService) {
     @PostMapping("/add")
     fun addCustomer(
         @Valid
